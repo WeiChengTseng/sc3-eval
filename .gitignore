@@ -1,0 +1,6 @@
+.DS_Store
+.tools/
+.tmp_paper_figure_deps/
+assets/rollouts_split/
+assets/rollouts_split_frames/
+assets/ablation_id_frames/

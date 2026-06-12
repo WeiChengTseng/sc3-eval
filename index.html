@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Project page for SC3-Eval: Evaluating Robot Foundation Models via Self-Consistent Video Generation."
+    >
+    <title>SC3-Eval | Project Page</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-hero">
+      <nav class="top-nav" aria-label="Page sections">
+        <a href="#abstract">Abstract</a>
+        <a href="#results">Results</a>
+        <a href="#ablation-study">Ablations</a>
+      </nav>
+
+      <div class="container hero-content">
+        <p class="eyebrow">CoRL Submission 2026</p>
+        <h1>
+          <span class="title-prefix">SC3-Eval</span>
+          <span class="title-main">Evaluating Robot Foundation Models via Self-Consistent Video Generation</span>
+        </h1>
+        <p class="subtitle">
+          A self-consistent video generation recipe that adapts pre-trained robot video foundation models into faithful closed-loop policy evaluators.
+        </p>
+
+        <div class="button-row" aria-label="Project links">
+          <a class="button primary" href="assets/Cosmos%20PI%20Policy%20Evaluation%20%282%29.pdf">Paper</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="container teaser-section" aria-labelledby="teaser-title">
+        <h2 id="teaser-title">Self-Consistent Video Generation</h2>
+        <p>
+          SC3-Eval enforces forward-inverse dynamics consistency, multi-view
+          consistency, and test-time consistency to keep imagined policy rollouts
+          faithful over long horizons.
+        </p>
+        <figure class="teaser-figure">
+          <img
+            class="teaser-image"
+            src="assets/teaser_v4.png"
+            alt="SC3-Eval consistency axes for forward-inverse dynamics, multi-view prediction, and test-time rollout termination"
+          >
+          <figcaption>
+            The three consistency axes of SC3-Eval: forward-inverse dynamics
+            consistency reduces rollout drift, multi-view consistency keeps
+            camera views coherent, and test-time consistency terminates
+            off-manifold generations.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="container section" id="abstract" aria-labelledby="abstract-title">
+        <h2 id="abstract-title">Abstract</h2>
+        <p>
+          Evaluating generalist robot manipulation policies in the real world is
+          expensive, slow, and difficult to scale. Action-conditioned video
+          world models offer a scalable alternative by simulating policy
+          rollouts. Autoregressive rollouts accumulate compounding errors,
+          observations across multiple camera views must remain mutually
+          consistent, and the evaluator must generalize to policies whose
+          behaviors lie outside the training distribution. We address these
+          challenges with SC3-Eval, a self-consistent video generation recipe
+          that adapts a pre-trained video foundation model into an accurate
+          policy evaluator by enforcing three complementary forms of
+          consistency: forward-inverse dynamics consistency, cross-view
+          consistency, and test-time consistency. Across seven real-world
+          vision-language-action policies, SC3-Eval attains a closed-loop
+          Pearson correlation of 0.929 and MMRV of 0.119, outperforming prior
+          video-model-based baselines and generalizing to new tasks.
+        </p>
+      </section>
+
+      <section class="container section" id="results" aria-labelledby="policy-evaluation-title">
+        <h2 id="policy-evaluation-title">Policy Evaluation Results</h2>
+        <p>
+          SC3-Eval tracks real-world policy success rates across
+          in-distribution and out-of-distribution table bussing tasks, including
+          fine-grained success criteria.
+        </p>
+        <h3>Evaluation Setup</h3>
+        <p>
+          We evaluate table bussing with synchronized external and wrist camera
+          views, and score each trajectory using three criteria: language
+          following, object lifting, and object placing.
+        </p>
+        <figure>
+          <img
+            class="section-image"
+            src="assets/exp_setup_v3.png"
+            alt="Real-world table bussing setup with forward and reverse task arrows, three camera views, and three success criteria"
+          >
+          <figcaption>
+            (a) Real-world experiment setup and table bussing task variants.
+            (b) Three synchronized camera views observed by the policy and
+            world model. (c) Example frames for the three success criteria:
+            language following, object lifting, and object placing.
+          </figcaption>
+        </figure>
+        <hr></hr>
+        <h3>Correlation With Real-World Performance</h3>
+        <p>
+          The correlation plots compare predicted success rates against
+          real-world success rates. The left two panels evaluate offline
+          open-loop rollouts, where the world model is conditioned on the
+          real-world action sequence. The right two panels evaluate online
+          closed-loop rollouts, where the policy acts on generated frames. Each
+          mode is split into the in-distribution table bussing task and an
+          out-of-distribution reverse table bussing task, which keeps the same
+          scene and motion primitives but swaps object destinations.
+        </p>
+        <figure>
+          <img
+            class="section-image"
+            src="assets/corr_v3.png"
+            alt="Policy evaluation correlation between predicted and ground-truth success rates"
+          >
+          <figcaption>
+            Each point is a policy-checkpoint and success-criterion pair.
+            SC3-Eval maintains strong agreement with real-world policy
+            performance across in-distribution and out-of-distribution tasks,
+            and across offline and online evaluation.
+          </figcaption>
+        </figure>
+        <hr></hr>
+        <div class="rollout-legend" aria-label="Rollout boundary color legend">
+          <span><i class="legend-swatch real-world"></i>Real-world rollout</span>
+          <span><i class="legend-swatch offline-model"></i>Offline world model rollout</span>
+          <span><i class="legend-swatch online-model"></i>Online world model rollout</span>
+        </div>
+        <div class="rollout-groups" aria-label="Policy evaluation rollout videos">
+          <div class="rollout-group">
+            <h3>Pick up yellow cup and put it in bin</h3>
+            <div class="video-grid">
+              <figure class="video-card combined-video-card">
+                <video controls preload="metadata">
+                  <source src="assets/rollouts_combined/pick_up_yellow_cup_and_put_it_in_bin.mp4" type="video/mp4">
+                </video>
+              </figure>
+            </div>
+          </div>
+          <div class="rollout-group">
+            <h3>Pick up spoon and put it in the blue trash can</h3>
+            <div class="video-grid">
+              <figure class="video-card combined-video-card">
+                <video controls preload="metadata">
+                  <source src="assets/rollouts_combined/pick_up_spoon_and_put_spoon_in_the_blue_trash_can.mp4" type="video/mp4">
+                </video>
+              </figure>
+            </div>
+          </div>
+          <div class="rollout-group">
+            <h3>Pick up chopstick and put it in the blue trash can</h3>
+            <div class="video-grid">
+              <figure class="video-card combined-video-card">
+                <video controls preload="metadata">
+                  <source src="assets/rollouts_combined/pick_up_chopstick_and_put_chopstick_in_the_blue_trash_can.mp4" type="video/mp4">
+                </video>
+              </figure>
+            </div>
+          </div>
+          <div class="rollout-group">
+            <h3>Pick up foil tray and throw it away</h3>
+            <div class="video-grid">
+              <figure class="video-card combined-video-card">
+                <video controls preload="metadata">
+                  <source src="assets/rollouts_combined/pick_up_foil_tray_and_throw_it_away.mp4" type="video/mp4">
+                </video>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container section" id="ablation-study" aria-labelledby="ablation-study-title">
+        <h2 id="ablation-study-title">Ablation Study</h2>
+        <p>
+          Cross-view consistency and inverse dynamics both contribute to
+          evaluator fidelity.
+        </p>
+        <div class="subsection-grid">
+          <article class="subsection-card">
+            <h3>Cross-View Consistency</h3>
+            <p>
+              We compare online world model rollouts with and without
+              cross-view reference mode. When the robot moves outside of the
+              workspace and returns, cross-view consistency helps the model
+              better recover the scene within the workspace for the wrist
+              camera.
+            </p>
+            <div class="ablation-video-card">
+              <div class="comparison-video-grid" aria-label="Cross-view reference mode ablation videos">
+                <figure>
+                  <video controls preload="metadata">
+                    <source src="assets/ablation_cvr/2026-04-02-164803Z-ur5e_single_4-d593b47b0e88__eval_17725__apr8_oct14_pretrain_rerun_80000__pick_up_bottle_and_throw_it_away_wo_cvr_bottomrow.mp4" type="video/mp4">
+                  </video>
+                  <figcaption>w/o CVR</figcaption>
+                </figure>
+                <figure>
+                  <video controls preload="metadata">
+                    <source src="assets/ablation_cvr/2026-04-02-164632Z-ur5e_single_4-f528b7d80a5f__eval_17725__apr8_episode_buckets_120000__pick_up_bottle_and_throw_it_away_w_cvr_bottomrow.mp4" type="video/mp4">
+                  </video>
+                  <figcaption>w/ CVR</figcaption>
+                </figure>
+              </div>
+            </div>
+          </article>
+          <article class="subsection-card">
+            <h3>Inverse Dynamics</h3>
+            <p>
+              We compare offline world model rollouts with and without inverse
+              dynamics (ID) joint training. ID joint training prevents rollouts
+              from drifting away from the ground-truth rollout.
+            </p>
+            <div class="ablation-video-card">
+              <figure>
+                <video controls preload="metadata">
+                  <source src="assets/ablation_id/inverse_dynamics_ablation_horizontal.mp4" type="video/mp4">
+                </video>
+                <figcaption class="split-caption">
+                  <span>GT</span>
+                  <span>w/o ID joint training</span>
+                  <span>w/ ID joint training</span>
+                </figcaption>
+              </figure>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" id="uncertainty-estimation" aria-labelledby="uncertainty-estimation-title">
+        <h2 id="uncertainty-estimation-title">Uncertainty Estimation</h2>
+        <p>
+          Inverse-dynamics uncertainty acts as a test-time consistency signal
+          for terminating unreliable imagined rollouts.
+        </p>
+        <div class="ablation-video-card">
+          <p class="prompt-label">
+            Prompt: pick up blue bowl and put it in bin
+          </p>
+          <figure>
+            <video class="uncertainty-video" controls preload="metadata">
+              <source src="assets/uncertainty/2026-04-02-084739Z-ur5e_single_4-5168577acfce__eval_17725__apr8_episode_buckets_120000__pick_up_blue_bowl_and_put_it_in_bin_bottomrow.mp4" type="video/mp4">
+            </video>
+          </figure>
+          <div
+            class="uncertainty-chart"
+            data-src="assets/uncertainty/2026-04-02-084739Z-ur5e_single_4-5168577acfce__eval_17725__apr8_episode_buckets_120000__pick_up_blue_bowl_and_put_it_in_bin_bottomrow_uncertainty.json"
+            aria-label="Uncertainty values over rollout chunks"
+          >
+            <p>Loading uncertainty visualization...</p>
+          </div>
+        </div>
+        <div class="ablation-video-card">
+          <p class="prompt-label">
+            Prompt: pick up chip bag and throw it away
+          </p>
+          <figure>
+            <video class="uncertainty-video" controls preload="metadata">
+              <source src="assets/uncertainty/2026-04-02-160529Z-ur5e_single_4-08c100b2b0b8__eval_17725__apr8_full_large_run_5_100000_rtb__pick_up_chip_bag_and_throw_it_away_bottomrow.mp4" type="video/mp4">
+            </video>
+          </figure>
+          <div
+            class="uncertainty-chart"
+            data-src="assets/uncertainty/2026-04-02-160529Z-ur5e_single_4-08c100b2b0b8__eval_17725__apr8_full_large_run_5_100000_rtb__pick_up_chip_bag_and_throw_it_away_uncertainty.json"
+            aria-label="Uncertainty values over rollout chunks"
+          >
+            <p>Loading uncertainty visualization...</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="container section" aria-labelledby="resources-title">
+        <h2 id="resources-title">Resources</h2>
+        <div class="resource-list">
+          <a href="assets/Cosmos%20PI%20Policy%20Evaluation%20%282%29.pdf">
+            <strong>Paper</strong>
+            <span>Read the full SC3-Eval submission.</span>
+          </a>
+          <a href="assets/table_bussing_explainer.pdf">
+            <strong>Table Bussing Explainer</strong>
+            <span>View the task decomposition used for fine-grained evaluation.</span>
+          </a>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          Anonymous submission &middot; Last updated May 2026
+        </p>
+      </div>
+    </footer>
+    <script>
+      async function renderUncertaintyChart(chart) {
+        try {
+          const response = await fetch(chart.dataset.src);
+          const data = await response.json();
+          const values = data.uncertainty || [];
+          const threshold = data.threshold;
+          if (!values.length || typeof threshold !== "number") {
+            throw new Error("Invalid uncertainty data");
+          }
+
+          const width = 900;
+          const height = 150;
+          const padding = { top: 12, right: 22, bottom: 26, left: 48 };
+          const plotWidth = width - padding.left - padding.right;
+          const plotHeight = height - padding.top - padding.bottom;
+          const maxValue = Math.max(...values, threshold) * 1.18;
+          const x = (index) => padding.left + (plotWidth * index) / Math.max(values.length - 1, 1);
+          const y = (value) => padding.top + plotHeight - (plotHeight * value) / maxValue;
+          const points = values.map((value, index) => `${x(index)},${y(value)}`).join(" ");
+          const thresholdY = y(threshold);
+
+          const bars = values.map((value, index) => {
+            const barWidth = Math.max(plotWidth / values.length - 8, 10);
+            const barX = x(index) - barWidth / 2;
+            const barY = y(value);
+            const barHeight = padding.top + plotHeight - barY;
+            const className = value >= threshold ? "uncertainty-bar is-above" : "uncertainty-bar";
+            return `<rect class="${className}" data-index="${index}" x="${barX}" y="${barY}" width="${barWidth}" height="${barHeight}" rx="4"></rect>`;
+          }).join("");
+
+          chart.innerHTML = `
+            <div class="chart-header">
+              <div>
+                <h3>Uncertainty Over Rollout Chunks</h3>
+                <p>Chunks above the threshold are treated as unreliable rollout segments.</p>
+              </div>
+            </div>
+            <svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Uncertainty chart">
+              <line class="axis" x1="${padding.left}" y1="${padding.top}" x2="${padding.left}" y2="${padding.top + plotHeight}"></line>
+              <line class="axis" x1="${padding.left}" y1="${padding.top + plotHeight}" x2="${padding.left + plotWidth}" y2="${padding.top + plotHeight}"></line>
+              <line class="threshold-line" x1="${padding.left}" y1="${thresholdY}" x2="${padding.left + plotWidth}" y2="${thresholdY}"></line>
+              <text class="threshold-label" x="${padding.left + plotWidth - 92}" y="${thresholdY - 8}">threshold</text>
+              <g class="bars">${bars}</g>
+              <polyline class="uncertainty-line" points="${points}"></polyline>
+              ${values.map((value, index) => `<circle cx="${x(index)}" cy="${y(value)}" r="4"></circle>`).join("")}
+              <text class="axis-label" x="${width / 2}" y="${height - 8}">rollout chunk</text>
+              <text class="axis-label y-label" x="18" y="${height / 2}">uncertainty</text>
+            </svg>
+          `;
+
+          const video = chart.closest(".ablation-video-card")?.querySelector(".uncertainty-video");
+          const chartBars = Array.from(chart.querySelectorAll(".uncertainty-bar"));
+          const syncBarsToVideo = () => {
+            if (!video || !Number.isFinite(video.duration) || video.duration <= 0) return;
+            const progress = Math.min(video.currentTime / video.duration, 1);
+            const activeIndex = Math.min(values.length - 1, Math.floor(progress * values.length));
+
+            chartBars.forEach((bar, index) => {
+              const shouldShow = video.currentTime > 0 && index <= activeIndex;
+              bar.classList.toggle("is-visible", shouldShow);
+              bar.classList.toggle("is-current", shouldShow && index === activeIndex);
+            });
+          };
+
+          if (video) {
+            video.addEventListener("loadedmetadata", syncBarsToVideo);
+            video.addEventListener("timeupdate", syncBarsToVideo);
+            video.addEventListener("seeked", syncBarsToVideo);
+            video.addEventListener("ended", () => {
+              chartBars.forEach((bar) => bar.classList.add("is-visible"));
+              chartBars.at(-1)?.classList.add("is-current");
+            });
+          }
+        } catch (error) {
+          chart.innerHTML = "<p>Unable to load uncertainty visualization. Serve the site locally or deploy it to fetch the JSON file.</p>";
+        }
+      }
+
+      document.querySelectorAll(".uncertainty-chart").forEach(renderUncertaintyChart);
+    </script>
+  </body>
+</html>
