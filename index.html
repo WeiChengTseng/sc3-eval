@@ -8,7 +8,7 @@
       content="Project page for SC3-Eval: Evaluating Robot Foundation Models via Self-Consistent Video Generation."
     >
     <title>SC3-Eval | Project Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260615-outcomes">
   </head>
   <body>
     <header class="site-hero">
@@ -157,11 +157,26 @@
         </div>
         <div class="rollout-groups" aria-label="Policy evaluation rollout videos">
           <div class="rollout-group">
-            <h3>Pick up yellow cup and put it in bin</h3>
+            <h3>Pick up white bowl and put it in the blue trash can</h3>
             <div class="video-grid">
               <figure class="video-card combined-video-card">
+                <table class="outcome-table" aria-label="White bowl rollout outcome annotations">
+                  <thead>
+                    <tr>
+                      <th>Rollout</th>
+                      <th>Language following</th>
+                      <th>Object lifting</th>
+                      <th>Object placing</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="outcome-row real-world"><th>GT</th><td class="is-pass">v</td><td class="is-pass">v</td><td class="is-fail">x</td></tr>
+                    <tr class="outcome-row offline-model"><th>Offline</th><td class="is-pass">v</td><td class="is-pass">v</td><td class="is-fail">x</td></tr>
+                    <tr class="outcome-row online-model"><th>Online</th><td class="is-pass">v</td><td class="is-pass">v</td><td class="is-fail">x</td></tr>
+                  </tbody>
+                </table>
                 <video controls preload="metadata">
-                  <source src="assets/rollouts_combined/pick_up_yellow_cup_and_put_it_in_bin.mp4" type="video/mp4">
+                  <source src="assets/rollouts_combined/pick_up_white_bowl_and_put_white_bowl_in_the_blue_trash_can.mp4" type="video/mp4">
                 </video>
               </figure>
             </div>
@@ -170,6 +185,21 @@
             <h3>Pick up spoon and put it in the blue trash can</h3>
             <div class="video-grid">
               <figure class="video-card combined-video-card">
+                <table class="outcome-table" aria-label="Spoon rollout outcome annotations">
+                  <thead>
+                    <tr>
+                      <th>Rollout</th>
+                      <th>Language following</th>
+                      <th>Object lifting</th>
+                      <th>Object placing</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="outcome-row real-world"><th>GT</th><td class="is-pass">v</td><td class="is-fail">x</td><td class="is-fail">x</td></tr>
+                    <tr class="outcome-row offline-model"><th>Offline</th><td class="is-pass">v</td><td class="is-fail">x</td><td class="is-fail">x</td></tr>
+                    <tr class="outcome-row online-model"><th>Online</th><td class="is-pass">v</td><td class="is-fail">x</td><td class="is-fail">x</td></tr>
+                  </tbody>
+                </table>
                 <video controls preload="metadata">
                   <source src="assets/rollouts_combined/pick_up_spoon_and_put_spoon_in_the_blue_trash_can.mp4" type="video/mp4">
                 </video>
@@ -177,11 +207,26 @@
             </div>
           </div>
           <div class="rollout-group">
-            <h3>Pick up chopstick and put it in the blue trash can</h3>
+            <h3>Pick up plastic container and throw it away</h3>
             <div class="video-grid">
               <figure class="video-card combined-video-card">
+                <table class="outcome-table" aria-label="Plastic container rollout outcome annotations">
+                  <thead>
+                    <tr>
+                      <th>Rollout</th>
+                      <th>Language following</th>
+                      <th>Object lifting</th>
+                      <th>Object placing</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="outcome-row real-world"><th>GT</th><td class="is-pass">v</td><td class="is-pass">v</td><td class="is-pass">v</td></tr>
+                    <tr class="outcome-row offline-model"><th>Offline</th><td class="is-pass">v</td><td class="is-pass">v</td><td class="is-pass">v</td></tr>
+                    <tr class="outcome-row online-model"><th>Online</th><td class="is-pass">v</td><td class="is-pass">v</td><td class="is-pass">v</td></tr>
+                  </tbody>
+                </table>
                 <video controls preload="metadata">
-                  <source src="assets/rollouts_combined/pick_up_chopstick_and_put_chopstick_in_the_blue_trash_can.mp4" type="video/mp4">
+                  <source src="assets/rollouts_combined/pick_up_plastic_container_and_throw_it_away.mp4" type="video/mp4">
                 </video>
               </figure>
             </div>
@@ -190,6 +235,21 @@
             <h3>Pick up foil tray and throw it away</h3>
             <div class="video-grid">
               <figure class="video-card combined-video-card">
+                <table class="outcome-table" aria-label="Foil tray rollout outcome annotations">
+                  <thead>
+                    <tr>
+                      <th>Rollout</th>
+                      <th>Language following</th>
+                      <th>Object lifting</th>
+                      <th>Object placing</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="outcome-row real-world"><th>GT</th><td class="is-pass">v</td><td class="is-pass">v</td><td class="is-pass">v</td></tr>
+                    <tr class="outcome-row offline-model"><th>Offline</th><td class="is-pass">v</td><td class="is-pass">v</td><td class="is-pass">v</td></tr>
+                    <tr class="outcome-row online-model"><th>Online</th><td class="is-pass">v</td><td class="is-pass">v</td><td class="is-pass">v</td></tr>
+                  </tbody>
+                </table>
                 <video controls preload="metadata">
                   <source src="assets/rollouts_combined/pick_up_foil_tray_and_throw_it_away.mp4" type="video/mp4">
                 </video>
@@ -302,7 +362,7 @@
     <footer class="site-footer">
       <div class="container">
         <p>
-          Anonymous submission &middot; Last updated May 2026
+          Last updated May 2026
         </p>
       </div>
     </footer>

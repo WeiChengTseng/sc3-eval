@@ -226,6 +226,26 @@ h3 {
   margin: 0 auto 26px;
 }
 
+.figure-placeholder {
+  display: grid;
+  min-height: 260px;
+  place-items: center;
+  border: 1px dashed #aeb8c2;
+  border-radius: 22px;
+  background:
+    linear-gradient(135deg, rgba(49, 95, 140, 0.12), transparent),
+    var(--surface-muted);
+  color: var(--muted);
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.figure-placeholder.large {
+  min-height: clamp(280px, 44vw, 480px);
+  margin-bottom: 30px;
+}
+
 .teaser-figure {
   margin: 0;
 }
@@ -243,6 +263,24 @@ h3 {
   margin: 14px auto 0;
   color: var(--muted);
   line-height: 1.45;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.card {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface-muted);
+}
+
+.card p {
+  margin-bottom: 0;
+  color: var(--muted);
 }
 
 .subsection-grid {
@@ -263,6 +301,10 @@ h3 {
   color: var(--muted);
 }
 
+.section-figure {
+  margin-top: 24px;
+}
+
 .section-image {
   display: block;
   width: 100%;
@@ -270,6 +312,11 @@ h3 {
   border: 1px solid var(--border);
   border-radius: 18px;
   background: var(--surface);
+}
+
+.compact-figure {
+  min-height: 220px;
+  margin-top: 18px;
 }
 
 .ablation-video-card {
@@ -494,6 +541,7 @@ figcaption {
 .video-card video {
   display: block;
   width: 100%;
+  margin-top: 12px;
   border: 4px solid var(--border);
   border-radius: 14px;
   background: #000000;
@@ -503,6 +551,62 @@ figcaption {
   margin-top: 10px;
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+.outcome-table {
+  width: 100%;
+  margin: 0 0 10px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.8rem;
+}
+
+.outcome-table th,
+.outcome-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+.outcome-table th {
+  font-weight: 800;
+}
+
+.outcome-table thead th {
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.74rem;
+  line-height: 1.25;
+}
+
+.outcome-table tbody th {
+  width: 22%;
+  text-align: left;
+}
+
+.outcome-table td {
+  font-weight: 800;
+}
+
+.outcome-table td.is-pass,
+.outcome-table td.is-fail {
+  text-transform: uppercase;
+}
+
+.outcome-table td.is-pass {
+  color: #276749;
+}
+
+.outcome-table td.is-fail {
+  color: #9b2c2c;
+}
+
+.outcome-table tr:last-child th,
+.outcome-table tr:last-child td {
+  border-bottom: 0;
 }
 
 .resource-list {
@@ -527,6 +631,21 @@ figcaption {
 
 .resource-list span {
   color: var(--muted);
+}
+
+pre {
+  overflow-x: auto;
+  margin: 18px 0 0;
+  padding: 22px;
+  border-radius: 18px;
+  background: #17202a;
+  color: #edf4f7;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
 .site-footer {
@@ -561,6 +680,7 @@ figcaption {
     border-radius: 22px;
   }
 
+  .card-grid,
   .subsection-grid,
   .comparison-video-grid,
   .rollout-groups,
