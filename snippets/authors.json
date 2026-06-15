@@ -1,0 +1,25 @@
+{
+  "authors": [
+    { "name": "Wei-Cheng Tseng", "affiliations": [1, 2, 3] },
+    { "name": "Gashon Hussein", "affiliations": [4] },
+    { "name": "Yuzhu Dong", "affiliations": [3] },
+    { "name": "Allen Z. Ren", "affiliations": [4] },
+    { "name": "Lucy X. Shi", "affiliations": [4, 5] },
+    { "name": "XuDong Wang", "affiliations": [4] },
+    { "name": "Sergey Levine", "affiliations": [4, 6] },
+    { "name": "Zhaoshuo Li", "affiliations": [3] },
+    { "name": "Jinwei Gu", "affiliations": [3] },
+    { "name": "Florian Shkurti", "affiliations": [1, 2, 7] },
+    { "name": "Ming-Yu Liu", "affiliations": [3] },
+    { "name": "Quan Vuong", "affiliations": [4] }
+  ],
+  "affiliations": {
+    "1": "University of Toronto",
+    "2": "Vector Institute",
+    "3": "NVIDIA",
+    "4": "Physical Intelligence",
+    "5": "Stanford University",
+    "6": "UC Berkeley",
+    "7": "Allen Institute for AI"
+  }
+}

@@ -50,6 +50,7 @@
           <sup>6</sup>UC Berkeley
           <sup>7</sup>Allen Institute for AI
         </p>
+
       </div>
     </header>
 
@@ -64,7 +65,7 @@
         <figure class="teaser-figure">
           <img
             class="teaser-image"
-            src="assets/teaser_v4.png"
+            src="assets/teaser_v6.png"
             alt="SC3-Eval consistency axes for forward-inverse dynamics, multi-view prediction, and test-time rollout termination"
           >
           <figcaption>
@@ -209,24 +210,24 @@
             <h3>Cross-View Consistency</h3>
             <p>
               We compare online world model rollouts with and without
-              cross-view reference mode. When the robot moves outside of the
+              cross-view inpainting mode. When the robot moves outside of the
               workspace and returns, cross-view consistency helps the model
               better recover the scene within the workspace for the wrist
               camera.
             </p>
             <div class="ablation-video-card">
-              <div class="comparison-video-grid" aria-label="Cross-view reference mode ablation videos">
+              <div class="comparison-video-grid" aria-label="Cross-view inpainting mode ablation videos">
                 <figure>
                   <video controls preload="metadata">
-                    <source src="assets/ablation_cvr/2026-04-02-164803Z-ur5e_single_4-d593b47b0e88__eval_17725__apr8_oct14_pretrain_rerun_80000__pick_up_bottle_and_throw_it_away_wo_cvr_bottomrow.mp4" type="video/mp4">
+                    <source src="assets/ablation_cvr/2026-04-01-204936Z-ur5e_single_4-2f1aa8e29d1f__eval_17724__apr8_oct14_pretrain_80000__pick_up_bottle_and_put_bottle_in_the_clear_bussing_bin_to_the_left_wo_cvi.mp4" type="video/mp4">
                   </video>
-                  <figcaption>w/o CVR</figcaption>
+                  <figcaption><strong>w/o</strong> cross-view inpainting</figcaption>
                 </figure>
                 <figure>
                   <video controls preload="metadata">
-                    <source src="assets/ablation_cvr/2026-04-02-164632Z-ur5e_single_4-f528b7d80a5f__eval_17725__apr8_episode_buckets_120000__pick_up_bottle_and_throw_it_away_w_cvr_bottomrow.mp4" type="video/mp4">
+                    <source src="assets/ablation_cvr/2026-04-01-204936Z-ur5e_single_4-2f1aa8e29d1f__eval_17724__apr8_oct14_pretrain_80000__pick_up_bottle_and_put_bottle_in_the_clear_bussing_bin_to_the_left_w_cvi.mp4" type="video/mp4">
                   </video>
-                  <figcaption>w/ CVR</figcaption>
+                  <figcaption><strong>w/</strong> cross-view inpainting</figcaption>
                 </figure>
               </div>
             </div>
@@ -301,7 +302,7 @@
     <footer class="site-footer">
       <div class="container">
         <p>
-          Last updated May 2026
+          Anonymous submission &middot; Last updated May 2026
         </p>
       </div>
     </footer>
