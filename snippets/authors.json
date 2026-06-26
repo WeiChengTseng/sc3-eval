@@ -9,7 +9,7 @@
     { "name": "Sergey Levine", "affiliations": [4, 6] },
     { "name": "Zhaoshuo Li", "affiliations": [3] },
     { "name": "Jinwei Gu", "affiliations": [3] },
-    { "name": "Florian Shkurti", "affiliations": [1, 2, 7] },
+    { "name": "Florian Shkurti", "affiliations": [1, 2] },
     { "name": "Ming-Yu Liu", "affiliations": [3] },
     { "name": "Quan Vuong", "affiliations": [4] }
   ],
@@ -19,7 +19,6 @@
     "3": "NVIDIA",
     "4": "Physical Intelligence",
     "5": "Stanford University",
-    "6": "UC Berkeley",
-    "7": "Allen Institute for AI"
+    "6": "UC Berkeley"
   }
 }
